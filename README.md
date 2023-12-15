@@ -27,3 +27,19 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### Note
+Create
+```
+npm create vue@latest
+```
+
+Uninstall pinia
+```
+npm uninstall pinia
+```
+
+Install vuex
+```
+npm install vuex@next --save
+```
