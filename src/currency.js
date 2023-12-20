@@ -1,3 +1,5 @@
+// Currency, comma separated thousands, decimal point rounded, +/- signed
+
 const digitsRE = /(\d{3})(?=\d)/g
 
 export function currency(value, currency, decimals) {
