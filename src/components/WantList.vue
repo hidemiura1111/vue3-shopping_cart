@@ -1,15 +1,30 @@
 <template>
   <ul>
-    <li>test 1</li>
-    <li>test 1</li>
-    <li>test 1</li>
-    <li>test 1</li>
+    <li
+      v-for="wantProduct in wantProducts"
+      :key="wantProduct.id">
+      {{ wantProduct.title }} - {{ currency(wantProduct.price, '€', 3) }}
+    </li>
   </ul>
 </template>
 
 <script>
-export default {
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+import { currency } from '../currency'
 
+export default {
+  setup() {
+    const store = useStore()
+    const wantProducts = computed(() => store.state.wantProducts.items)
+
+    store.dispatch('wantProducts/getAllWantProducts')
+
+    return {
+      wantProducts,
+      currency
+    }
+  }
 }
 </script>
 
