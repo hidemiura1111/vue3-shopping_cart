@@ -2,10 +2,10 @@
  * Mocking client-server processing
  */
 const _wantProducts = [
-  { 'id': 1, 'title': 'Google Pixel 9', 'price': 800.99, 'inventory': 1 },
-  { 'id': 2, 'title': 'UNIQLO Ultra Lite Down', 'price': 50.99, 'inventory': 10 },
-  { 'id': 3, 'title': 'Street Fighter VI', 'price': 99.99, 'inventory': 5 },
-  { 'id': 4, 'title': 'Car', 'price': 399000, 'inventory': 1 }
+  { 'id': 5, 'title': 'Google Pixel 9', 'price': 800.99 },
+  { 'id': 6, 'title': 'UNIQLO Ultra Lite Down', 'price': 50.99 },
+  { 'id': 7, 'title': 'Street Fighter VI', 'price': 99.99 },
+  { 'id': 8, 'title': 'Car', 'price': 399000 }
 ]
 
 export default {

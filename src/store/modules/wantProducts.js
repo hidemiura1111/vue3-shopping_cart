@@ -15,6 +15,12 @@ const actions = {
     want.getWantProducts(wantProducts => {
       commit('setWantProducts', wantProducts)
     })
+  },
+  addProductToWantList({ state, commit }, product) {
+    const itemInWantList = state.items.find(item => item.id === product.id)
+    if (!itemInWantList) {
+      commit('pushProductToWantList', { product: product })
+    }
   }
 }
 
@@ -22,6 +28,13 @@ const actions = {
 const mutations = {
   setWantProducts(state, wantProducts) {
     state.items = wantProducts
+  },
+  pushProductToWantList(state, { product }) {
+    state.items.push({
+      id: product.id,
+      title: product.title,
+      price: product.price
+    })
   },
 }
 

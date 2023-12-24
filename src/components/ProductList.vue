@@ -10,6 +10,10 @@
         @click="addProductToCart(product)">
         Add to cart
       </button>
+      <button
+        @click="addProductToWantList(product)">
+        Add to WantList
+      </button>
     </li>
   </ul>
 </template>
@@ -27,11 +31,14 @@ export default {
 
     const addProductToCart = (product) => store.dispatch('cart/addProductToCart', product)
 
+    const addProductToWantList = (product) => store.dispatch('wantProducts/addProductToWantList', product)
+
     store.dispatch('products/getAllProducts')
 
     return {
       products,
       addProductToCart,
+      addProductToWantList,
       currency
     }
   }
