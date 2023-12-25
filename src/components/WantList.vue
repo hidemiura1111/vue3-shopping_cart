@@ -1,9 +1,14 @@
 <template>
   <ul>
     <li
-      v-for="wantProduct in wantProducts"
-      :key="wantProduct.id">
-      {{ wantProduct.title }} - {{ currency(wantProduct.price, '€', 3) }}
+      v-for="product in wantProducts"
+      :key="product.id">
+      {{ product.title }} - {{ currency(product.price, '€', 3) }}
+      <br>
+      <button
+        @click="removeProductfromWantList(product)">
+        Remove from WantList
+      </button>
     </li>
   </ul>
 </template>
@@ -16,12 +21,17 @@ import { currency } from '../currency'
 export default {
   setup() {
     const store = useStore()
+
     const wantProducts = computed(() => store.state.wantProducts.items)
+
+    const removeProductfromWantList = (product) => store.dispatch('wantProducts/removeProductfromWantList', product)
+
 
     store.dispatch('wantProducts/getAllWantProducts')
 
     return {
       wantProducts,
+      removeProductfromWantList,
       currency
     }
   }

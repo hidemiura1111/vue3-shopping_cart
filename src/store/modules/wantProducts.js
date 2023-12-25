@@ -21,7 +21,14 @@ const actions = {
     if (!itemInWantList) {
       commit('pushProductToWantList', { product: product })
     }
+  },
+  removeProductfromWantList({ state, commit }, product) {
+    const itemInWantList = state.items.find(item => item.id === product.id)
+    if (itemInWantList) {
+      commit('removeProductFromWantList', { product: product })
+    }
   }
+
 }
 
 // mutations
@@ -36,6 +43,12 @@ const mutations = {
       price: product.price
     })
   },
+  removeProductFromWantList(state, { product }) {
+    const index = state.items.findIndex(item => item.id === product.id)
+    if (index !== -1) {
+      state.items.splice(index, 1)
+    }
+  }
 }
 
 export default {
