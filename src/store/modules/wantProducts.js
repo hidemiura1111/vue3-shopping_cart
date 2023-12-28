@@ -7,7 +7,13 @@ const state = {
 }
 
 // getters
-const getters = {}
+const getters = {
+  existsInWantList: (state, getters, rootState) => {
+    return (product) => {
+      return state.items.find(item => item.id === product.id)
+    }
+  }
+}
 
 // actions
 const actions = {

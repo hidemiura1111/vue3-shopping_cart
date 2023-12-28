@@ -26,7 +26,6 @@ export default {
 
     const removeProductfromWantList = (product) => store.dispatch('wantProducts/removeProductfromWantList', product)
 
-
     store.dispatch('wantProducts/getAllWantProducts')
 
     return {

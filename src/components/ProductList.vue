@@ -11,6 +11,7 @@
         Add to cart
       </button>
       <button
+        :disabled="existsInWantList(product)"
         @click="addProductToWantList(product)">
         Add to WantList
       </button>
@@ -29,6 +30,8 @@ export default {
 
     const products = computed(() => store.state.products.all)
 
+    const existsInWantList = (product) => store.getters['wantProducts/existsInWantList'](product)
+
     const addProductToCart = (product) => store.dispatch('cart/addProductToCart', product)
 
     const addProductToWantList = (product) => store.dispatch('wantProducts/addProductToWantList', product)
@@ -37,6 +40,7 @@ export default {
 
     return {
       products,
+      existsInWantList,
       addProductToCart,
       addProductToWantList,
       currency
