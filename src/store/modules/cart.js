@@ -46,6 +46,11 @@ const actions = {
     )
   },
 
+  removeProductFromCart({ state, commit }, product) {
+    const cartItem = state.items.find(item => item.id === product.id)
+    commit('decrementProductFromCart', cartItem)
+  },
+
   addProductToCart({ state, commit }, product) {
     commit('setCheckoutStatus', null)
     if (product.inventory > 0) {
@@ -68,6 +73,11 @@ const mutations = {
       id,
       quantity: 1
     })
+  },
+
+  decrementProductFromCart(state, product) {
+    const cartItem = state.items.find(item => item.id === product.id)
+    cartItem.quantity--
   },
 
   incrementItemQuantity(state, { id }) {

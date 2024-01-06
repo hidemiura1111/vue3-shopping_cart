@@ -7,6 +7,8 @@
     <ul>
       <li v-for="product in products" :key="product.id">
         {{ product.title }} - {{ currency(product.price) }} x {{ product.quantity }}
+        <br>
+        <button @click="removeProductFromCart(product)">Remove from Cart</button>
       </li>
     </ul>
     <p>Total: {{ currency(total) }}</p>
@@ -28,6 +30,7 @@ export default {
     const products = computed(() => store.getters['cart/cartProducts'])
     const total = computed(() => store.getters['cart/cartTotalPrice'])
 
+    const removeProductFromCart = (product) => store.dispatch('cart/removeProductFromCart', product)
     const checkout = (products) => store.dispatch('cart/checkout', products)
 
     return {
@@ -35,6 +38,7 @@ export default {
       checkoutStatus,
       products,
       total,
+      removeProductFromCart,
       checkout
     }
   }
