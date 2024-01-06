@@ -48,7 +48,11 @@ const actions = {
 
   removeProductFromCart({ state, commit }, product) {
     const cartItem = state.items.find(item => item.id === product.id)
-    commit('decrementProductFromCart', cartItem)
+    if (cartItem.quantity > 1) {
+      commit('decrementProductFromCart', cartItem)
+    } else {
+      commit('removeProductFromCart', cartItem)
+    }
   },
 
   addProductToCart({ state, commit }, product) {
@@ -78,6 +82,13 @@ const mutations = {
   decrementProductFromCart(state, product) {
     const cartItem = state.items.find(item => item.id === product.id)
     cartItem.quantity--
+  },
+
+  removeProductFromCart(state, product) {
+    const index = state.items.findIndex(item => item.id === product.id)
+    if (index !== -1) {
+      state.items.splice(index, 1)
+    }
   },
 
   incrementItemQuantity(state, { id }) {
