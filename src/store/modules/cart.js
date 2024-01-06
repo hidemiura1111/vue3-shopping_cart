@@ -53,6 +53,7 @@ const actions = {
     } else {
       commit('removeProductFromCart', cartItem)
     }
+    commit('products/incrementProductInventory', { id: product.id }, { root: true })
   },
 
   addProductToCart({ state, commit }, product) {
